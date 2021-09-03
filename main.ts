@@ -4,3 +4,4 @@ function saludar(name: string)
 }
 
 console.log("Magdiel");
+console.log("Carlos");
