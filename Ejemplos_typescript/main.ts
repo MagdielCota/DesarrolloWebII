@@ -237,12 +237,14 @@ type Cuadrado2  = Figura &
 {
     lados: 4;
 }
+
 console.log("\n                   Tipos -> Literales\n");
 function imprimir(estadoCivil: 'Soltero' | 'Casado')
 {
     console.log(estadoCivil);
 }
 imprimir("Casado");
+
 console.log("\n                   Tipos -> Funciones como expresiones\n");
 function saludar4(fn: (a: string) => void)
 {
