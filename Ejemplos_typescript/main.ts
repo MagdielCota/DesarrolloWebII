@@ -255,3 +255,9 @@ function imprimirEnConsola(s: string)
     console.log(s);
 }
 saludar4(imprimirEnConsola);
+
+console.log("\n                   Tipos -> Constructores\n");
+interface Transporte
+{
+    nombre: string;
+}
