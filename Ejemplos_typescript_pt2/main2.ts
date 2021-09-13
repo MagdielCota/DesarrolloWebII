@@ -326,3 +326,123 @@ const macbookPro2: Portatil2 =
     so: "OSX",
     version: "Catalina",
 }
+
+console.log("\n                   Object Types -> Generics");
+interface Caja
+{
+    contenido: any;
+}interface Caja2
+{
+    contenido: unknown;
+}
+let x: Caja2 =
+{
+    contenido: "Hola mundo",
+}
+
+// mediante typeof podemos verificar si el tipo es string
+if (typeof x.contenido === "string")
+{
+    console.log(x.contenido.toLocaleLowerCase());
+}
+
+// mediante "as tipo" podemos decirle al compilador que esto es siempre string
+console.log((x.contenido as string).toLocaleLowerCase());
+
+interface CajaNumber
+{
+    contenido: number;
+}
+interface CajaString
+{
+    contenido: string;
+}
+interface CajaBoolean
+{
+    contenido: boolean;
+}
+
+//eso implica que tendremos que crear diferentes funciones/sobrecarga, para poder operar con cada uno de estos tipos
+function setContenido(caja: CajaNumber, nuevoContenido: string): void;
+function setContenido(caja: CajaString, nuevoContenido: number): void;
+function setContenido(caja: CajaBoolean, nuevoContenido: boolean): void;
+function setContenido(caja: {contenido: any}, nuevoContenido: any)
+{
+    caja.contenido = nuevoContenido;
+}
+
+interface Caja3<T>
+{
+    contenido: T;
+}
+
+let cajaDeString: Caja3<string> = { contenido: "Hola mundo" };
+let cajaDeNumero: Caja3<number> = { contenido: 100 };
+let cahaDeFecha: Caja3<Date> = { contenido: new Date() };
+
+type Cajita<T> =
+{
+    contenido: T;
+}
+
+let cajaDeString2: Cajita<string> = { contenido: "Hola mundo" };
+let cajaDeNumero2: Cajita<number> = { contenido: 100 };
+let cahaDeFecha2: Cajita<Date> = { contenido: new Date() };
+
+console.log("\n                   Object Types -> Array type");
+const imprimirTareas = (v: Array<string>) =>
+{
+    v.forEach((v) =>
+    {
+        console.log(v);
+    });
+};
+
+const misTareas: string[] =
+[
+    "levantarse",
+    "lavarse los dientes",
+    "sacar al perro",
+];
+
+imprimirTareas(misTareas);
+
+console.log("\n                   Object Types -> ReadonlyArray type");
+const miLista : ReadonlyArray<string> = ["a", "b", "c"];
+
+//miLista.push("d"); <- error
+
+//forma incorrecta: no existe el constructor readonlyarray
+//const miLista2 = new ReadonlyArray('a', 'b', 'c');
+
+//forma correcta: podemos asignar un arreglo normal a uno de solo lectura
+const miLista3: ReadonlyArray<string> = ['a', 'b', 'c'];
+
+console.log("\n                   Object Types -> Tuples");
+type Auto = [string, number];
+
+const prius : Auto = ['Toyota', 2015];
+const civic : Auto = ['Honda', 2016];
+
+console.log('El Prius es marca: ', prius[0],' y modelo ', prius[1]);
+console.log('El Civic es marca: ', civic[0],' y modelo ', civic[1]);
+
+//Las tuplas son muy utilizadas dentro de las convenciones de API´s, esto brinda flexibilidad cuando deseamos asignar nombres a arti de la destructuración
+const prius2: [string, number] = ["Toyota", 2015];
+
+const [marca, modelo] = prius2;
+
+console.log("La marca del prius es: ", marca);
+console.log("El modelo del prius es: ", modelo);
+
+console.log("\n                   Rest tuples");
+
+type StringNumberBooleans = [string, number, ...boolean[]];
+const a: StringNumberBooleans = ["a", 1, true, false, true];
+
+console.log("\n                   Readonly tuples");
+type Auto5 = readonly [string, number];
+
+const prius3: Auto5 = ["Toyota", 2014];
+
+//prius3[0] = 'Honda'; <- error, no se puede modificar por que es una propiedad readonly

@@ -180,3 +180,51 @@ var macbookPro2 = {
     so: "OSX",
     version: "Catalina"
 };
+console.log("\n                   Object Types -> Generics");
+var x = {
+    contenido: "Hola mundo"
+};
+// mediante typeof podemos verificar si el tipo es string
+if (typeof x.contenido === "string") {
+    console.log(x.contenido.toLocaleLowerCase());
+}
+// mediante "as tipo" podemos decirle al compilador que esto es siempre string
+console.log(x.contenido.toLocaleLowerCase());
+function setContenido(caja, nuevoContenido) {
+    caja.contenido = nuevoContenido;
+}
+var cajaDeString = { contenido: "Hola mundo" };
+var cajaDeNumero = { contenido: 100 };
+var cahaDeFecha = { contenido: new Date() };
+var cajaDeString2 = { contenido: "Hola mundo" };
+var cajaDeNumero2 = { contenido: 100 };
+var cahaDeFecha2 = { contenido: new Date() };
+console.log("\n                   Object Types -> Array type");
+var imprimirTareas = function (v) {
+    v.forEach(function (v) {
+        console.log(v);
+    });
+};
+var misTareas = [
+    "levantarse",
+    "lavarse los dientes",
+    "sacar al perro",
+];
+imprimirTareas(misTareas);
+console.log("\n                   Object Types -> ReadonlyArray type");
+var miLista = ["a", "b", "c"];
+//miLista.push("d"); <- error
+//forma incorrecta: no existe el constructor readonlyarray
+//const miLista2 = new ReadonlyArray('a', 'b', 'c');
+//forma correcta: podemos asignar un arreglo normal a uno de solo lectura
+var miLista3 = ['a', 'b', 'c'];
+console.log("\n                   Object Types -> Tuples");
+var prius = ['Toyota', 2015];
+var civic = ['Honda', 2016];
+console.log('El Prius es marca: ', prius[0], ' y modelo ', prius[1]);
+console.log('El Civic es marca: ', civic[0], ' y modelo ', civic[1]);
+//Las tuplas son muy utilizadas dentro de las convenciones de API´s, esto brinda flexibilidad cuando deseamos asignar nombres a arti de la destructuración
+var prius2 = ["Toyota", 2015];
+var marca = prius2[0], modelo = prius2[1];
+console.log("La marca del prius es: ", marca);
+console.log("El modelo del prius es: ", modelo);
