@@ -11,4 +11,3 @@ class Punto
 }
 
 let miPunto = new Punto()
- 
